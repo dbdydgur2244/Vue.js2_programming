@@ -1,0 +1,30 @@
+<!--2.1 Hello World!-->
+<html>
+<head>
+    <title>Hello Vue!!</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message}}</h1>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<!--For using vue.js, include cdnjs in script tag-->
+<script>
+    /*
+    var data = {
+        message: 'Greetings your majesty!'
+    };
+    */    
+
+    new Vue({
+        el: '#app',
+        //data: data
+        data: {
+            message: 'Greetings your Majestry!'
+        }
+    })
+    // New vue instance
+    
+</script>
+</body>
+</html>

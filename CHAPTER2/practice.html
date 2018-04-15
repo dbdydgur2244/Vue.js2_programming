@@ -1,0 +1,25 @@
+<!--2.4 Practice problem-->
+<html>
+<head>
+    <title>Practice problem</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello {{ name }}</h1>
+        <p>
+            <strong>Enter your name:</strong><br>
+            <input v-model="name">
+        </p>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            name: ""
+        }
+    })
+</script>
+</html>

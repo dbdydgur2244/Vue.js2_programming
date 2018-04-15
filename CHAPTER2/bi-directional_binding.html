@@ -1,0 +1,23 @@
+<!--2.2 Bi-directinal binding example code-->
+<html>
+<head>
+    <h1>Ho man~!</h1>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <input v-model="message"> 
+        <!--when you want to change msg in user input element
+        use v-model vue directive-->
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            message: 'Greetings your Majesty'
+        }
+    })
+</script>
+</html>
