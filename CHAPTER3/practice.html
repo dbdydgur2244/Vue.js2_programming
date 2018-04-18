@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title> Chapter 4 practice</title>
+</head>
+<body>
+    <div id="app">
+        
+        <h1 v-if="!gender">Hello, Please input your name!</h1>
+        <h1 v-else-if="gender=='male'">Hello, Mister {{ name }}.</h1>
+        <h1 v-else>Hello, Miss {{ name }}.</h1>
+        <p>
+            <!--
+                textarea는 text 타입 input 요소는 한 줄만 입력이 가능해서 긴 내용의 경우에는 textarea 써야함
+                input 요소는 폼 입력을 하는 주요한 요소로써, type 속성에 따라 여러 형태를 보여준다.
+                http://webberstudy.com/html-css/html-3/form-2/ 참고.
+            -->
+            <strong>Enter your gender:</strong><br>
+            <textarea cols="40" v-model="gender"></textarea><br>
+            <strong>Enter your name:</strong><br>
+            <textarea cols="40" v-model="name"></textarea><br>
+        </p>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            name: "",
+            gender: ""
+        }
+    })
+</script>
+</html>
