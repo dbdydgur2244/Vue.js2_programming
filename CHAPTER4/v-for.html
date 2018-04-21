@@ -1,0 +1,23 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="STYLESHEET">
+    <title>v-for practice</title>
+</head>
+<body>
+    <div class="container">
+        <h1>The multiplication table of 4</h1>
+        <ul class="list-group">
+            <li v-for="i in 11" class="list-group-item">
+                {{ i-1 }} times 4 equels {{ (i-1) * 4}}.
+            </li>
+        </ul>
+    </div>        
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script>
+    new Vue({
+        el: '.container'
+    })
+</script>
+</html>

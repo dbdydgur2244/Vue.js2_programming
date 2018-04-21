@@ -1,0 +1,39 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="STYLESHEET">
+    <title>Object travelsal practice</title>
+</head>
+<body>
+    <div class="container">
+        <ul class="list-group">
+            <li v-for="story in stories"
+                class="list-group-item"
+            >
+                {{ story.writer }} said "{{ story.plot }}"
+        </ul>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script>
+    new Vue({
+        el: '.container',
+        data: {
+            stories: [
+                {
+                    plot: "I crashed my car today!",
+                    writer: "Yonghyuk"
+                },
+                {
+                    plot: "Yesterday, someone stole my bag!",
+                    writer: "Younjun"
+                },
+                {
+                    plot:  "Someone ate my chocolate...",
+                    writer: "Namgyu"
+                },
+            ]
+        }
+    })
+</script>
+</html>

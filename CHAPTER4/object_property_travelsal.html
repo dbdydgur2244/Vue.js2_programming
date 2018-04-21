@@ -1,0 +1,63 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="STYLESHEET">
+</head>
+<body>
+    <div class="container">
+        <h1>Let's hear some stories</h1>
+        <!--
+        <ul class="list-group">
+            <li v-for="value in story" class="list-group-item">
+                {{ value }}
+            </li>
+        </ul>
+        -->
+        <!--
+        <ul class="list-group">
+            <li v-for="(value, key, index) in story" class="list-group-item">
+                {{index}} : {{key}} : {{ value }}
+            </li>
+        </ul>
+        -->
+        <ul class="list-group">
+            <li v-for="astory in stories" class="list-group-item">
+                <p><ul class="list-group">
+                    <li v-for="(value, key, index) in astory" class="list-group-item">
+                        {{index}} : {{key}} :: {{ value }}
+                    </li>
+                </ul></p>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script>
+    new Vue({
+        el: '.container',
+        data: {
+            stories: [
+                {
+                    plot: "I crashed my car today!",
+                    writer: "Yonghyuk",
+                    upvote: 23
+                },
+                {
+                    plot: "Yesterday, someone stole my bag!",
+                    writer: "Younjun",
+                    upvote: 26
+                },
+                {
+                    plot:  "Someone ate my chocolate...",
+                    writer: "Namgyu",
+                    upvote: 22
+                },
+            ],
+            story: {
+                plot: "Someone ate my chocolate...",
+                writer: 'John',
+                upvote: 47
+            }
+        }
+    })
+</script>
+</html>

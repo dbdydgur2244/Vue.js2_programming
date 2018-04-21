@@ -1,0 +1,31 @@
+<!--
+부트스트랩은 모바일 친화적인 반응형 웹사이트를 개발하기 위한 HTM, CSS 자바스크립트 프레임워크임.
+부트스트랩은 사이트 내용을 감싸고 그리드 시스템을 담을 엘레먼트를 필요로 한다.
+-->
+<html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="STYLESHEET">
+    <title>Hello bootstrap</title>
+</head>
+<body>
+    <!--반응형 고정 너비 컨테이너-->
+    <div class="container">
+        <h1>Hello Bootstrap, sit next to me.</h1>
+    </div>
+    <!--전체 너비를 사용하는 컨테이너-->
+    <div class="container-fluid">
+        <h1>Hello Bootstrap, sit next to me.</h1>
+    </div>
+    
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script>
+    new Vue({
+        el: '.container'
+    })
+    // id가 app인 엘리먼트를 지정하는 대신 Vue 인스턴스 내의 옵션으로 container 클래스를 지정했다.
+    // 클래스로 엘리먼트를 가리킬 경우 클래스가 1개 이상 존재하면  Vue.js는 첫 번째 엘리먼트만 마운트한다는 점을 유의해야 한다.
+    // 그리고 루트 인스턴스를 <html>이나 <body>에 마운트하는 것은 권장되지 않는다고 한다.
+</script>
+</html>
