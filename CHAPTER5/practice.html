@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Chapter5 practice</title>
+</head>
+<body>
+    <div class="container">
+        <h1>People of Vue</h1>
+        <ul class="list-group">
+            <li v-for="candidate in candidates" class="list-group-item">
+            {{candidate.name}} {{candidate.votes}}
+            <button class="btn btn-default" @click="upvote(candidate)">Vote</button>
+            </li>
+        </ul>
+        <input @keyup.delete="clear" class="form-control" placeholder="press 'delete' to reset "></input>
+        <h2>Our mayor is {{mayor.name}}!</h2>
+        <pre>{{$data.candidates}}</pre>
+        <pre>{{ mayor }}</pre>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            candidates: [
+                {
+                    name: "Mr. Black",
+                    votes: 0
+                },
+                {
+                    name: "Mr. Pink",
+                    votes: 0
+                },
+                {
+                    name: "Mr. White",
+                    votes: 0
+                },
+                {
+                    name: "Mr.Brown",
+                    votes: 0
+                },
+            ]
+        },
+        computed: {
+            mayor: function () {
+                this.candidates.sort(function (a, b) {
+                    return b.votes - a.votes;
+                });
+                return this.candidates[0];
+            }
+        },
+        methods: {
+            upvote: function(candidate) {
+                candidate.votes += 1;
+            },
+
+            clear: function() {
+                this.candidates.map(function(candidate) {
+                    candidate.votes = 0;
+                    return candidate;
+                })
+            }
+        }
+    });
+</script>
+</html>

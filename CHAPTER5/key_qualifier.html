@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Type 2 numbers and choose operation</h1>
+        <form class="form-inline">
+            <input v-model.number="a" @keyup.enter="calculate">
+            <select v-model="operator" class="form-control">
+                <option>+</option>
+                <option>-</option>
+                <option>*</option>
+                <option>/</option>
+            </select>
+            <!-- 입력을 숫자로 파싱하기 위해
+                 특별한 한정자인 'number'를 사용합니다. -->
+            <input v-model.number="b" @keyup.enter="calculate">
+            <!-- @click.prevent 로 하면 더 이상 새로고침하지 않음.-->
+            <button type="submit" @click="calculate"
+                    class="btn btn-primary">
+                    Calculate
+            </button>
+        </form>
+        <h2>Result: {{a}} {{operator}} {{b}} = {{c}}</h2>
+        <pre>{{ $data }}</pre>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            a: 1,
+            b: 2,
+            c: null,
+            operator: "+",
+        },
+        methods: {
+            calculate: function() {
+                // 백그라운드에서 폼을 제출하고 페이지가 다시 로드되서 결과가 없어짐.
+                // 이걸 막기 위해서 onsubmit 이벤트의 기본 동작을 취소함.
+                event.preventDefault();
+                switch (this.operator) {
+                    case "+":
+                        this.c = this.a + this.b;
+                        break;
+                    case "-":
+                        this.c = this.a - this.b;
+                        break;
+                    case "*":
+                        this.c = this.a * this.b;
+                        break;
+                    case "/":
+                        this.c = this.a / this.b;
+                        break;
+                }
+            }
+        },
+    });
+</script>
+</html>
