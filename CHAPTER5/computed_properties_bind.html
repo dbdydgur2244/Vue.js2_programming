@@ -1,0 +1,66 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Computed properties</title>
+</head>
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
+<body>
+    <div class="container" v-cloak>
+        <h1>Type 2 numbers and choose operation</h1>
+        <form class="form-inline">
+            <input v-model.number="a" class="form-control">
+            <select v-model="operator" class="form-control">
+                <option v-for="option in options" :value="option.value">
+                    {{option.text}}
+                </option>
+            </select>
+            <input v-model.number="b" class="form-control">
+        </form>
+        <h2>Result: {{a}} {{operator}} {{b}} = {{c}}</h2>
+        <pre>{{ $data }}</pre>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            a: 1,
+            b: 2,
+            operator: "+",
+            options: [
+                {text: "+", value: "+"},
+                {text: "-", value: "-"},
+                {text: "*", value: "*"},
+                {text: "/", value: "/"}
+            ]
+        },
+        computed: {
+            // 계산된 프로퍼티
+            c: function() {
+                var result;
+                switch (this.operator) {
+                    case "+":
+                        result = this.a + this.b;
+                        break;
+                    case "-":
+                        result = this.a - this.b;
+                        break;
+                    case "*":
+                        result = this.a * this.b;
+                        break;
+                    case "/":
+                        result = this.a / this.b;
+                        break;
+                }
+                return result; 
+            }
+        }
+    });
+</script>
+</html>
