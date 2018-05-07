@@ -1,0 +1,79 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="STYLESHEET">
+</head>
+<body>
+<div class="container">
+    <h1>Let's hear some stories</h1>
+    <div class=form-group>
+        <ul class="list-group">
+            <li v-for="story in orderedStories">
+                <h2>{{ story.writer }}'s stories</h2>
+                <div class="list-group-item">{{story.writer}} said {{story.plot}}</div>
+            </li>
+        </ul>
+        <button @click="order = order * -1">Reverse Order</button>
+        <div class="form-group">
+            <label for="query">
+                What are you looking for?
+            </label>
+            <input v-model="query" class="form-control">
+        </div>
+        <h3>Search results:</h3>
+        <ul class="list-group">
+            <li v-for="story in search" class="list-group-item">
+                {{ story.writer }} said "{{ story.plot }}"
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script>
+    new Vue({
+        el: ".container",
+        data: {
+            stories: [
+                {
+                    plot: "I crashed my car today!",
+                    writer: "Yonghyuk",
+                    upvote: 28
+                },
+                {
+                    plot: "Yesterday, someone stole my bag!",
+                    writer: "Younjun",
+                    upvote: 26
+                },
+                {
+                    plot: "Someone ate my chocolate...",
+                    writer: "Namgyu",
+                    upvote: 22
+                },
+            ],
+            query: ' ',
+            order: 1
+        },
+        methods: {
+            storiesBy: function(writer) {
+                return this.stories.filter(function (story) {
+                    return story.writer == writer
+                })
+            }
+        },
+        computed: {
+            orderedStories: function () {
+                var order = this.order;
+                return this.stories.sort(function (a, b) { 
+                    return (a.upvote - b.upvote) * order
+                })
+            },
+            search: function () {
+                var query = this.query
+                return this.stories.filter(function (story){
+                    return story.plot.includes(query)
+                })
+            }
+        }
+    })
+</script>
+</html>
